@@ -17,14 +17,17 @@ const serializeNote = note => ({
 notesRouter
   .route('/')
   .get((req, res, next) => {
-    NotesService.getAllNotes(
-      req.app.get('db')
-    )
-    .then(notes => {
-      res.json(notes.map(serializeNote))
-    })
-    .catch(next)
+    res.send('Hello, world with notes!')
   })
+  // .get((req, res, next) => {
+  //   NotesService.getAllNotes(
+  //     req.app.get('db')
+  //   )
+  //   .then(notes => {
+  //     res.json(notes.map(serializeNote))
+  //   })
+  //   .catch(next)
+  // })
   .post(jsonParser, (req, res, next) => {
     const { name, content, modified, folder_id } = req.body
     const newNote = {name, folder_id }
